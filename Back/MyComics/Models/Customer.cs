@@ -9,20 +9,13 @@ namespace MyComics.Models
     public class Customer
     {
         private int id;
-        private string firstname;
-        private string lastname;
-        private string login;
-        private string pwd;
-        private List<CustomerComic> listCustomerComic;
+        private string nickname;
+        private string pass;
+        private bool isAdmin;
 
         public int Id { get => id; set => id = value; }
-        public string Firstname { get => firstname; set => firstname = value; }
-        public string Lastname { get => lastname; set => lastname = value; }
-        public string Pwd { get => pwd; set => pwd = value; }
-        public List<CustomerComic> ListCustomerComic { get => listCustomerComic; set => listCustomerComic = value; }
-
-        [Column("log_in")]
-        public string Login { get => login; set => login = value; }
-        
+        public string Nickname { get => nickname; set => nickname = value; }
+        public string Pass { get => pass; set => pass = value; }
+        public bool IsAdmin { get => isAdmin; set => isAdmin = value; }
     }
 }

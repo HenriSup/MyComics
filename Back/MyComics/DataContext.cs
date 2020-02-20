@@ -15,7 +15,6 @@ namespace MyComics
         }
         public DbSet<Comic> Comic { get; set; }
         public DbSet<Customer> Customer { get; set; }
-        public DbSet<CustomerComic> CustomerComic { get; set; }
-
+        public DbSet<Category> Category { get; set; }
     }
 }

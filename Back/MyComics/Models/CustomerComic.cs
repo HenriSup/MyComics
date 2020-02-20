@@ -6,15 +6,18 @@ using System.Threading.Tasks;
 
 namespace MyComics.Models
 {
-    public class CustomerComic
+    public class Favorite
     {
-        private int customer_id;
-        private int comic_id;
-       
-        public int Customer_id { get => customer_id; set => customer_id = value; }
-        public int Comic_id { get => comic_id; set => comic_id = value; }
+        private int id;
+        private int customerId;
+        private int comicId;
+
+        public int Id { get => id; set => id = value; }
+        public int CustomerId { get => customerId; set => customerId = value; }
+        public int ComicId { get => comicId; set => comicId = value; }
 
         [JsonIgnore]
         public Customer Customer { get; set; }
+        
     }
 }

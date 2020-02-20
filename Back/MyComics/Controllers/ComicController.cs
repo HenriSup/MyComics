@@ -20,40 +20,42 @@ namespace MyComics.Controllers
         public IActionResult Get()
         {
             DataContext db = new DataContext();
-            return Ok(db.Comic.ToList());
+            return Ok(db.Comic.Include(x => x.Category).ToList());
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public IActionResult GetById(int id)
         {
             DataContext db = new DataContext();
-            Comic c = db.Comic.FirstOrDefault(x => x.Id == id);
+            Comic c = db.Comic.Include(x => x.Category).FirstOrDefault(x => x.Id == id);
             return Ok(c);
         }
 
         [HttpGet("title/{title}")]
-        public IActionResult Get(string title)
+        public IActionResult GetComicByTitle(string title)
         {
             DataContext db = new DataContext();
-            List<Comic> comics = db.Comic.Where(c => c.Title.Contains(title)).ToList();
+            List<Comic> comics = db.Comic.Include(x => x.Category).Where(c => c.Title.Contains(title)).ToList();
             return Ok(comics);
         }
 
-        [HttpGet("author/{author}")]
-        public IActionResult Get2(string author)
+        [HttpGet("writer/{writer}")]
+        public IActionResult GetComicsByWriter(string writer)
         {
             DataContext db = new DataContext();
-            List<Comic> authors = db.Comic.Where(c => c.Author.Contains(author)).ToList();
-            return Ok(authors);
+            List<Comic> comics = db.Comic.Include(x => x.Category).Where(c => c.Writer.Contains(writer)).ToList();
+            return Ok(comics);
         }
 
-        [HttpGet("category/{category}")]
-        public IActionResult Get2(int category)
+        [HttpGet("category/{categoryId}")]
+        public IActionResult GetComicByCategory(int categoryId)
         {
             DataContext db = new DataContext();
-            List<Comic> cat = db.Comic.Where(c => c.Category == (Category)category ).ToList();
-            return Ok(cat);
+            List<Comic> comics = db.Comic.Include(x => x.Category).Where(c => c.Category.Id == categoryId).ToList();
+            return Ok(comics);
         }
+
+        //TODO v
 
         [HttpPost]
         public IActionResult Post([FromBody]Comic comic)
