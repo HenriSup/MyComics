@@ -47,7 +47,7 @@ namespace MyComics.Controllers
             DataContext db = new DataContext();
             db.Customer.Add(customer);
             db.SaveChanges();
-            return Ok(new { message = "Customer added" });
+            return Ok(new { id = customer.Id , message = "Customer added" });
         }
 
         //[HttpPut("{update}")]

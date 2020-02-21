@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cors;
@@ -56,6 +57,16 @@ namespace MyComics.Controllers
         }
 
         //TODO v
+        //[HttpPost("upload/0")]
+        //public IActionResult Post([FromForm]ImageType data)
+        //{
+        //    string img = Guid.NewGuid().ToString() + "-" + data.Image.FileName;
+        //    string pathToUpload = Path.Combine(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot"), "images", img);
+        //    FileStream stream = System.IO.File.Create(pathToUpload);
+        //    data.Image.CopyTo(stream);
+        //    stream.Close();
+        //    return Ok(new { imageLink = "images/" + img });
+        //}
 
         [HttpPost]
         public IActionResult Post([FromBody]Comic comic)
@@ -82,5 +93,9 @@ namespace MyComics.Controllers
                 return NotFound();
             }
         }
+    }
+    public class ImageType
+    {
+        public IFormFile Image { get; set; }
     }
 }

@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyComics.Models;
 
 namespace MyComics.Controllers
 {
+    [EnableCors("allowsAll")]
     [Route("[controller]")]
     [ApiController]
     public class CategoryController : ControllerBase
